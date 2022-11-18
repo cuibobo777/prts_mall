@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -81,8 +81,14 @@ WSGI_APPLICATION = 'prts_mall.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',   # 数据库引擎
+        'NAME': 'prts_mall',    # 数据库名称
+        'HOST': '127.0.0.1',    # 数据库地址，本机 ip 地址 127.0.0.1
+        'PORT': 3306,   # 端口
+        'USER': 'root',     # 数据库用户名
+        'PASSWORD': 'Qazedc1235.',   # 数据库密码
     }
 }
 
@@ -109,9 +115,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-hans'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/ShangHai'
 
 USE_I18N = True
 
@@ -122,8 +128,82 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
-
+STATICFILES_DIRS = (
+    os.path.join(os.path.join(BASE_DIR, 'static')),
+)
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# -----------------------simpleUI配置区域-------------
+SIMPLEUI_HOME_INFO = False    # 服务器信息
+SIMPLEUI_HOME_QUICK = True      # 快捷操作
+SIMPLEUI_HOME_ACTION = False    # 最近操作
+SIMPLEUI_ANALYSIS = False       # 收集分析，一天上报一次 ，默认为True。
+
+SIMPLEUI_LOADING = False
+
+SIMPLEUI_CONFIG = {
+    'system_keep': False,
+    'menu_display': ['首页管理', '权限管理'],
+    'dynamic': True,
+    'menus': [{
+        'app': 'home',
+        'name': '首页管理',
+        'icon': 'fas fa-university',
+        'models': [{
+            'name': '轮播图管理',
+            'icon': 'fa fa-image',
+            'url': 'home/banner/'
+        }, {
+            'name': '宫格图管理',
+            'icon': 'fa fa-image',
+            'url': 'home/grid/'
+        }]
+    }
+    ]
+}
+
+
+# ---------Django Rest Framework--------
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        # 所有用户都可以访问
+        'rest_framework.permissions.AllowAny',
+        # 'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+    ],
+    'PAGE_SIZE': 10,
+}
+
+# permissions.AllowAny
+
+
+# ---------Django CORS 配置----------
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_METHODS = (
+    'GET',
+    'POST',
+    'PUT',
+    'PATCH',
+    'DELETE',
+    'OPTIONS'
+)
+CORS_ALLOW_HEADERS = (
+    'XMLHttpRequest',
+    'X_FILENAME',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+    'Pragma',)
