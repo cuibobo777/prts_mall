@@ -4,20 +4,20 @@ from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.decorators import action
 
-from goods.models import GoodsInfo
+from goods.models import Goods
 
 
-class GoodsInfoVeiwSet(viewsets.ModelViewSet):
+class GoodsVeiwSet(viewsets.ModelViewSet):
     """
     API Banner轮播图URL
     """
-    @action(methods=['GET'], detail=False, url_path='home/goodsInfo/')
+    @action(methods=['GET'], detail=False, url_path='goods/goods/')
     def findGoodsInfo(self, request):
         """
         获取banner图url
         :param request:
         """
-        queryset = GoodsInfo.objects.values().filter(goods_sell_status=0)
+        queryset = Goods.objects.values().filter(goods_sell_status=0)
         if queryset != '':
             return JsonResponse({'status': 200, 'data': list(queryset)}, safe=False)
         else:

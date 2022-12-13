@@ -2,7 +2,7 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from rest_framework import viewsets
 # Create your views here.
-from rest_framework.decorators import action
+from rest_framework.decorators import action, authentication_classes
 
 from home.models import Banner, Grid
 
@@ -11,6 +11,7 @@ class BannerVeiwSet(viewsets.ModelViewSet):
     """
     API Banner轮播图URL
     """
+    authentication_classes = []
     @action(methods=['GET'], detail=False, url_path='home/banner/')
     def findBanners(self, request):
         """
@@ -25,6 +26,7 @@ class BannerVeiwSet(viewsets.ModelViewSet):
 
 
 class GridVeiwSet(viewsets.ModelViewSet):
+    authentication_classes = []
     @action(methods=['GET'], detail=False, url_path='home/grid/')
     def findGrids(self, request):
         """

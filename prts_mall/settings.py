@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home',
+    'goods',
+    'login'
 ]
 
 MIDDLEWARE = [
@@ -147,7 +149,7 @@ SIMPLEUI_LOADING = False
 
 SIMPLEUI_CONFIG = {
     'system_keep': False,
-    'menu_display': ['首页管理', '权限管理'],
+    'menu_display': ['首页管理', '商品管理', '权限管理'],
     'dynamic': True,
     'menus': [{
         'app': 'home',
@@ -162,14 +164,23 @@ SIMPLEUI_CONFIG = {
             'icon': 'fa fa-image',
             'url': 'home/grid/'
         }]
-    }
-    ]
+    }, {
+        'app': 'goods',
+        'name': '商品管理',
+        'icon': 'fa fa-gifts',
+        'models': [{
+            'name': '商品信息管理',
+            'icon': 'fa fa-info',
+            'url': 'goods/goods/'
+        }]
+    }]
 }
 
 
 # ---------Django Rest Framework--------
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
+        'login.extensions.auth.JwtHeaderAuthentication',
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
     ],

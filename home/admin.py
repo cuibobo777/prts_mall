@@ -17,6 +17,7 @@ class BannerAdmin(admin.ModelAdmin):
     ]
     list_per_page = 10
 
+
 class GridAdmin(admin.ModelAdmin):
     list_display = ['grid_id', 'grid_url', 'grid_sort', 'redirect_url', 'grid_rank', 'is_deleted', 'create_time']
     fieldsets = [

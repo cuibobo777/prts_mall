@@ -2,7 +2,7 @@ from django.db import models
 
 
 # Create your models here.
-class GoodsInfo(models.Model):
+class Goods(models.Model):
     goods_id = models.AutoField(primary_key=True)   # 商品ID
     goods_name = models.CharField(max_length=100, null=True)       # 商品名称
     goods_intro = models.CharField(max_length=100, null=True)      # 商品介绍
@@ -18,4 +18,4 @@ class GoodsInfo(models.Model):
     create_time = models.DateField(auto_now_add=True)          # 创建时间
 
     class Meta:
-        db_table = 'mall_goodsInfo'
+        db_table = 'mall_goods'
