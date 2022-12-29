@@ -1,6 +1,6 @@
 ## PRTS电商系统后端
 
-#### 使用Django-rest-framework搭建
+#### 使用Django搭建
 
 ​		包含用户，商品，订单，购物车，地址等API接口
 
