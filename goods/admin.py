@@ -7,7 +7,7 @@ from goods.models import Goods
 class GoodsAdmin(admin.ModelAdmin):
     list_display = ['goods_id', 'goods_name', 'goods_intro', 'goods_category_id', 'goods_cover_img',
                     'goods_carousel', 'goods_detail_content', 'original_price', 'selling_price',
-                    'stock_num', 'tag', 'goods_sell_status', 'create_time']
+                    'stock_num', 'tag', 'goods_sell_status', 'goods_promotion_status', 'create_time']
     fieldsets = [
         ('商品名称', {'fields': ['goods_name']}),
         ('商品介绍', {'fields': ['goods_intro']}),
@@ -20,6 +20,7 @@ class GoodsAdmin(admin.ModelAdmin):
         ('库存数量', {'fields': ['stock_num']}),
         ('标签', {'fields': ['tag']}),
         ('商品销售状态', {'fields': ['goods_sell_status']}),
+        ('商品促销状态', {'fields': ['goods_promotion_status']}),
     ]
     list_per_page = 10
 

@@ -42,7 +42,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home',
     'goods',
-    'login'
+    'login',
+    'category',
+    'cart',
+    'me',
+    'order'
 ]
 
 MIDDLEWARE = [
@@ -172,7 +176,12 @@ SIMPLEUI_CONFIG = {
             'name': '商品信息管理',
             'icon': 'fa fa-info',
             'url': 'goods/goods/'
-        }]
+        },{
+            'name': '商品分类管理',
+            'icon': 'fa fa-info',
+            'url': 'category/category/'
+        }
+        ]
     }]
 }
 

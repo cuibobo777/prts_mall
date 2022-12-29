@@ -10,5 +10,5 @@ class GoodsInfoSerializer(serializers.HyperlinkedModelSerializer):
         fields = ['goods_name', 'goods_intro', 'goods_category_id',
                   'goods_cover_img', 'goods_carousel', 'goods_cover_img',
                   'goods_detail_content', 'original_price', 'selling_price', 'stock_num',
-                  'tag'
+                  'tag', 'goods_promotion_status'
                   ]

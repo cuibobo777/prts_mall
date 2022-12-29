@@ -27,6 +27,9 @@ urlpatterns = [
     path('home/', include('home.urls')),
     path('goods/', include('goods.urls')),
     path('login/', include('login.urls')),
+    path('category/', include('category.urls')),
+    path('cart/', include('cart.urls')),
+    path('me/', include('me.urls')),
 ]
 
 router = DefaultRouter()
